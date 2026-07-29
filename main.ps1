@@ -166,9 +166,10 @@ function Show-UwpAppsMenu {
         @{ Number = '10'; Text = 'Sound Recorder' },
         @{ Number = '11'; Text = 'Sticky Notes' },
         @{ Number = '12'; Text = 'Weather' },
-        @{ Number = '13'; Text = 'Windows Camera' },
-        @{ Number = '14'; Text = 'Windows Clock' },
-        @{ Number = '15'; Text = 'Xbox' }
+        @{ Number = '13'; Text = 'Widgets' },
+        @{ Number = '14'; Text = 'Windows Camera' },
+        @{ Number = '15'; Text = 'Windows Clock' },
+        @{ Number = '16'; Text = 'Xbox' }
     )
     Write-MenuItemColumns -Items $uwpMenuItems -Columns 3
     Write-Host ""
@@ -279,9 +280,10 @@ $UwpApps = [ordered]@{
     '10' = @{ Label = 'Sound Recorder';  Id = '9WZDNCRFHWKN' }
     '11' = @{ Label = 'Sticky Notes';    Id = '9NBLGGH4QGHW' }
     '12' = @{ Label = 'Weather';         Id = '9WZDNCRFJ3Q2' }
-    '13' = @{ Label = 'Windows Camera';  Id = '9WZDNCRFJBBG' }
-    '14' = @{ Label = 'Windows Clock';   Id = '9WZDNCRFJ3PR' }
-    '15' = @{ Label = 'Xbox';            Id = '9MV0B5HZVK9Z' }
+    '13' = @{ Label = 'Widgets';         Id = '9MSSGKG348SP' }
+    '14' = @{ Label = 'Windows Camera';  Id = '9WZDNCRFJBBG' }
+    '15' = @{ Label = 'Windows Clock';   Id = '9WZDNCRFJ3PR' }
+    '16' = @{ Label = 'Xbox';            Id = '9MV0B5HZVK9Z' }
 }
 
 function Invoke-ApplyMenu {
@@ -300,7 +302,7 @@ function Invoke-UwpAppsMenu {
     while ($true) {
         Show-UwpAppsMenu
 
-        $choice = Read-MenuChoice -Range "0-15" -MultiSelect
+        $choice = Read-MenuChoice -Range "0-16" -MultiSelect
         if ($null -eq $choice) { continue }
         if ([string]::IsNullOrWhiteSpace($choice)) { continue }
 

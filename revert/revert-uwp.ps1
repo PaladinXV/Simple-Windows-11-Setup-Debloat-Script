@@ -137,7 +137,8 @@ $apps = @(
     @{ N=11; Name="Weather";        Id="9WZDNCRFJ3Q2" },
     @{ N=12; Name="Windows Camera"; Id="9WZDNCRFJBBG" },
     @{ N=13; Name="Windows Clock";  Id="9WZDNCRFJ3PR" },
-    @{ N=14; Name="Xbox";           Id="9MV0B5HZVK9Z" }
+    @{ N=14; Name="Xbox";           Id="9MV0B5HZVK9Z" },
+    @{ N=15; Name="Widgets";        Id="9MSSGKG348SP" }
 )
 
 $appsByNumber = @{}

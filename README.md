@@ -10,9 +10,6 @@ A simple, interactive PowerShell script to help setup/debloat Windows 11 Home/Pr
 > [!Warning]
 > If you are doing this on an existing install, be mindful that it will remove Microsoft Apps. Use at your own risk!
 
-# Known Issues
-- Since the latest Windows Update, Widgets "AllowNewsAndInterests" has been blocked.
-
 # Documentation
 - I am currently working on documenting all changes and features.
 [Documentation](https://github.com/PaladinXV/Simple-Windows-11-Setup-Debloat-Script/blob/main/documentation.md)
