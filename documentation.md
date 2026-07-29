@@ -1,6 +1,3 @@
-# Current Issues
-- Recent Windows Updates have blocked Widgets from being disabled by the normal key.
-
 # Documentation (NOT FINISHED)
 1) Short summary of each script
 2) Proper documentation of everything that is changed
