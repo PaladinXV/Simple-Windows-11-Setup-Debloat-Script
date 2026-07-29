@@ -186,11 +186,19 @@ try {
         'MicrosoftCorporationII.MicrosoftFamily',
         'MicrosoftCorporationII.QuickAssist',
         'MicrosoftTeams',
-        'MSTeams'
+        'MSTeams',
+        # Widgets / News and Interests - the Dsh registry policy is unreliable on
+        # updated systems, so Widgets is disabled by removing its app packages instead.
+        'MicrosoftWindows.Client.WebExperience',
+        'Microsoft.WidgetsPlatformRuntime',
+        'Microsoft.StartExperiencesApp'
     )
 
     $totalSteps = $apps.Count + 16
     Initialize-Bar -Total $totalSteps
+
+    # Sometimes if you don't stop the Widgets process first, removal of its packages may fail.
+    Get-Process -Name '*Widget*' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 
     foreach ($app in $apps) {
         Step-Bar -Status "Uninstalling - $app"
@@ -207,6 +215,7 @@ try {
                 $_ | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue | Out-Null
             }
     }
+
 
     Step-Bar -Status 'Uninstalling - OneDrive' -Delay
 
@@ -346,7 +355,6 @@ try {
     Set-RegValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarAl' -Value 0 -Type DWord
     Set-RegValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ShowTaskViewButton' -Value 0 -Type DWord
     Set-RegValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value 0 -Type DWord
-    Set-RegValue -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Dsh' -Name 'AllowNewsAndInterests' -Value 0 -Type DWord
 
     try {
         $pinnedNamespace = 'shell:::{4234d49b-0245-4df3-b780-3893943456e1}'
