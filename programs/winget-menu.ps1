@@ -260,15 +260,17 @@ $catalog = [ordered]@{
         @{ N=40; Name="Copilot - 365"; Id="9WZDNCRD29V9" },
         @{ N=41; Name="Feedback Hub"; Id="9NBLGGH4R32N" },
         @{ N=42; Name="Microsoft Teams"; Id="XP8BT8DW290MPQ" },
-        @{ N=43; Name="Outlook"; Id="9NRX63209R7B" },
-        @{ N=44; Name="Power Automate"; Id="9NFTCH6J7FHV" },
-        @{ N=45; Name="Quick Assist"; Id="9P7BP5VNWKX5" },
-        @{ N=46; Name="Sound Recorder"; Id="9WZDNCRFHWKN" },
-        @{ N=47; Name="Sticky Notes"; Id="9NBLGGH4QGHW" },
-        @{ N=48; Name="Weather"; Id="9WZDNCRFJ3Q2" },
-        @{ N=49; Name="Windows Camera"; Id="9WZDNCRFJBBG" },
-        @{ N=50; Name="Windows Clock"; Id="9WZDNCRFJ3PR" },
-        @{ N=51; Name="Xbox App"; Id="9MV0B5HZVK9Z" }
+        @{ N=43; Name="OneDrive"; Id="Microsoft.OneDrive" },
+        @{ N=44; Name="Outlook"; Id="9NRX63209R7B" },
+        @{ N=45; Name="Power Automate"; Id="9NFTCH6J7FHV" },
+        @{ N=46; Name="Quick Assist"; Id="9P7BP5VNWKX5" },
+        @{ N=47; Name="Sound Recorder"; Id="9WZDNCRFHWKN" },
+        @{ N=48; Name="Sticky Notes"; Id="9NBLGGH4QGHW" },
+        @{ N=49; Name="Weather"; Id="9WZDNCRFJ3Q2" },
+        @{ N=50; Name="Widgets"; Id="9MSSGKG348SP" },
+        @{ N=51; Name="Windows Camera"; Id="9WZDNCRFJBBG" },
+        @{ N=52; Name="Windows Clock"; Id="9WZDNCRFJ3PR" },
+        @{ N=53; Name="Xbox App"; Id="9MV0B5HZVK9Z" }
     )
 }
 
@@ -290,6 +292,7 @@ while ($true) {
     Write-Host ""
     Write-Host '    Multi-Selection is available "1,2,5-8"' -ForegroundColor DarkGray
     Write-Host "    A) Update All" -ForegroundColor Yellow
+    Write-Host "    I) Install Winget (Asheroto GitHub)" -ForegroundColor Yellow
     Write-Host "    0) Back" -ForegroundColor Red
     Write-Host ""
 
@@ -299,6 +302,11 @@ while ($true) {
     if ($choice -eq '0') { return }
 
     if ($choice -match '^[Aa]$') { Write-Host ""; Update-All; Wait-ForWinget; continue }
+
+    if ($choice -match '^[Ii]$') {
+        Start-Process powershell.exe -ArgumentList '-NoExit', '-Command', 'irm asheroto.com/winget | iex'
+        continue
+    }
 
     $numbers = @(Expand-Selection -InputText $choice)
     if ($numbers.Count -eq 0) {
