@@ -27,41 +27,6 @@ function Write-MenuItem {
     Write-Host $Text
 }
 
-function Write-MenuItemColumns {
-    param(
-        [Parameter(Mandatory)][array]$Items,
-        [int]$Columns = 3
-    )
-
-    $columnGap = 4
-    $texts = $Items | ForEach-Object { "$($_.Number)) $($_.Text)" }
-    $maxLen = ($texts | Measure-Object -Property Length -Maximum).Maximum
-    $cellWidth = $maxLen + $columnGap
-    $rows = [Math]::Ceiling($Items.Count / $Columns)
-
-    for ($r = 0; $r -lt $rows; $r++) {
-        Write-Host "    " -NoNewline
-        for ($c = 0; $c -lt $Columns; $c++) {
-            $idx = ($c * $rows) + $r
-            if ($idx -ge $Items.Count) { continue }
-
-            $entry = $Items[$idx]
-            $numText = "$($entry.Number)) "
-            Write-Host $numText -NoNewline -ForegroundColor Yellow
-
-            $printedLen = $numText.Length + $entry.Text.Length
-            if ($c -lt ($Columns - 1)) {
-                $pad = [Math]::Max($cellWidth - $printedLen, 0)
-                Write-Host ($entry.Text + (" " * $pad)) -NoNewline
-            }
-            else {
-                Write-Host $entry.Text -NoNewline
-            }
-        }
-        Write-Host ""
-    }
-}
-
 function Read-MenuChoice {
     param(
         [Parameter(Mandatory)][string]$Range,
@@ -139,42 +104,9 @@ function Show-RevertMenu {
     Write-MenuItem -Number '4' -Text 'Revert Defender Settings'
     Write-MenuItem -Number '5' -Text 'Revert Windows Update Settings'
     Write-MenuItem -Number '6' -Text 'Revert Right-Click Context Menu'
-
-    Write-SectionHeader -Title 'Submenu'
-    Write-MenuItem -Number '7' -Text 'Reinstall UWP Apps (Winget)'
     Write-Host ""
 
     Write-Host "    0) Back to Main Menu" -ForegroundColor Red
-    Write-Host ""
-}
-
-function Show-UwpAppsMenu {
-    Clear-Host
-    Write-TitleBanner
-
-    Write-SectionHeader -Title 'Reinstall UWP Apps'
-    $uwpMenuItems = @(
-        @{ Number = '1';  Text = 'Clipchamp' },
-        @{ Number = '2';  Text = 'Copilot' },
-        @{ Number = '3';  Text = 'Copilot - 365' },
-        @{ Number = '4';  Text = 'Feedback Hub' },
-        @{ Number = '5';  Text = 'Microsoft Teams' },
-        @{ Number = '6';  Text = 'OneDrive' },
-        @{ Number = '7';  Text = 'Outlook' },
-        @{ Number = '8';  Text = 'Power Automate' },
-        @{ Number = '9';  Text = 'Quick Assist' },
-        @{ Number = '10'; Text = 'Sound Recorder' },
-        @{ Number = '11'; Text = 'Sticky Notes' },
-        @{ Number = '12'; Text = 'Weather' },
-        @{ Number = '13'; Text = 'Widgets' },
-        @{ Number = '14'; Text = 'Windows Camera' },
-        @{ Number = '15'; Text = 'Windows Clock' },
-        @{ Number = '16'; Text = 'Xbox' }
-    )
-    Write-MenuItemColumns -Items $uwpMenuItems -Columns 3
-    Write-Host ""
-
-    Write-Host "    0) Back to Revert Menu" -ForegroundColor Red
     Write-Host ""
 }
 
@@ -267,25 +199,6 @@ $RevertActions = [ordered]@{
     '6' = @{ Label = 'Revert Right-Click Context Menu';     Path = 'revert\revert-right-click.ps1' }
 }
 
-$UwpApps = [ordered]@{
-    '1'  = @{ Label = 'Clipchamp';       Id = '9P1J8S7CCWWT' }
-    '2'  = @{ Label = 'Copilot';         Id = 'XP9CXNGPPJ97XX' }
-    '3'  = @{ Label = 'Copilot - 365';   Id = '9WZDNCRD29V9' }
-    '4'  = @{ Label = 'Feedback Hub';    Id = '9NBLGGH4R32N' }
-    '5'  = @{ Label = 'Microsoft Teams'; Id = 'XP8BT8DW290MPQ' }
-    '6'  = @{ Label = 'OneDrive';        Id = 'Microsoft.OneDrive' }
-    '7'  = @{ Label = 'Outlook';         Id = '9NRX63209R7B' }
-    '8'  = @{ Label = 'Power Automate';  Id = '9NFTCH6J7FHV' }
-    '9'  = @{ Label = 'Quick Assist';    Id = '9P7BP5VNWKX5' }
-    '10' = @{ Label = 'Sound Recorder';  Id = '9WZDNCRFHWKN' }
-    '11' = @{ Label = 'Sticky Notes';    Id = '9NBLGGH4QGHW' }
-    '12' = @{ Label = 'Weather';         Id = '9WZDNCRFJ3Q2' }
-    '13' = @{ Label = 'Widgets';         Id = '9MSSGKG348SP' }
-    '14' = @{ Label = 'Windows Camera';  Id = '9WZDNCRFJBBG' }
-    '15' = @{ Label = 'Windows Clock';   Id = '9WZDNCRFJ3PR' }
-    '16' = @{ Label = 'Xbox';            Id = '9MV0B5HZVK9Z' }
-}
-
 function Invoke-ApplyMenu {
     while ($true) {
         Show-ApplyMenu
@@ -298,47 +211,13 @@ function Invoke-ApplyMenu {
     }
 }
 
-function Invoke-UwpAppsMenu {
-    while ($true) {
-        Show-UwpAppsMenu
-
-        $choice = Read-MenuChoice -Range "0-16" -MultiSelect
-        if ($null -eq $choice) { continue }
-        if ([string]::IsNullOrWhiteSpace($choice)) { continue }
-
-        $wingetInstall = {
-            param($action)
-            Start-Process -FilePath 'winget' -ArgumentList @(
-                'install', '--id', $action.Id, '-e',
-                '--accept-package-agreements', '--accept-source-agreements'
-            ) -NoNewWindow -Wait
-        }
-
-        if (Invoke-SelectedActions -RawChoice $choice -Actions $UwpApps -Execute $wingetInstall) { return }
-    }
-}
-
 function Invoke-RevertMenu {
     while ($true) {
         Show-RevertMenu
 
-        $choice = Read-MenuChoice -Range "0-7" -MultiSelect
+        $choice = Read-MenuChoice -Range "0-6" -MultiSelect
         if ($null -eq $choice) { continue }
         if ([string]::IsNullOrWhiteSpace($choice)) { continue }
-
-        $tokens = Expand-ChoiceTokens -RawChoice $choice
-
-        if ($tokens -contains '7') {
-            if ($tokens.Count -eq 1) {
-                Invoke-UwpAppsMenu
-            }
-            else {
-                Write-Host ""
-                Write-Host "    Reinstall UWP Apps (Winget) must be selected on its own." -ForegroundColor Red
-                Wait-ForReturnToMenu
-            }
-            continue
-        }
 
         if (Invoke-SelectedActions -RawChoice $choice -Actions $RevertActions) { return }
     }
