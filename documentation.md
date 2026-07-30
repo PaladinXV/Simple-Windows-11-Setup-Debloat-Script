@@ -88,6 +88,7 @@
 - Sound Recorder
 - Sticky Notes
 - To Do List
+- Widgets
 - Xbox
 
 User can reinstall these with the "Reinstall UWP Apps (Winget)" or "Winget" options. These are considered bloat and can be annoying with notifications etc. or even hijacking user files (OneDrive)
@@ -123,3 +124,4 @@ User can reinstall these with the "Reinstall UWP Apps (Winget)" or "Winget" opti
 
 
 # Immersive Control Panel
+

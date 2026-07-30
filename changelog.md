@@ -6,4 +6,7 @@ Changed "AllowNewsAndInterests" (Widgets) from Registry key to removing the Wind
 
 -- v1.0.2 
 Added Asheroto Winget Installer - https://github.com/asheroto/winget-install
+(Update - Plan on removing this, was just testing)
 
+-- v1.0.3
+Removed "Install UWP Apps" from "Revert". Use Winget.
