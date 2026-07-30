@@ -86,7 +86,6 @@ function Invoke-External {
     }
 }
 
-# Progress Bar
 $script:ProgressIndex = 0
 $script:ProgressTotal = 1
 $script:ProgressBarWidth = 40
@@ -187,8 +186,6 @@ try {
         'MicrosoftCorporationII.QuickAssist',
         'MicrosoftTeams',
         'MSTeams',
-        # Widgets / News and Interests - the Dsh registry policy is unreliable on
-        # updated systems, so Widgets is disabled by removing its app packages instead.
         'MicrosoftWindows.Client.WebExperience',
         'Microsoft.WidgetsPlatformRuntime',
         'Microsoft.StartExperiencesApp'
@@ -197,7 +194,6 @@ try {
     $totalSteps = $apps.Count + 16
     Initialize-Bar -Total $totalSteps
 
-    # Sometimes if you don't stop the Widgets process first, removal of its packages may fail.
     Get-Process -Name '*Widget*' -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 
     foreach ($app in $apps) {
