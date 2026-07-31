@@ -19,7 +19,7 @@ function Invoke-WingetWithSilentFallback {
         [switch]$All
     )
 
-    $common = @('--source','winget')
+    $common = @()
     if ($Command -in @('install','upgrade')) {
         $common += @('--accept-package-agreements','--accept-source-agreements')
     }
