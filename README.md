@@ -11,7 +11,6 @@ A simple, interactive PowerShell script to help setup/debloat Windows 11 Home/Pr
 > If you are doing this on an existing install, be mindful that it will remove Microsoft Apps. Use at your own risk!
 
 # Known Issues
-- UWP-Apps under Winget is broken.
 - Widget registry key blocked with latest Windows updated. Testing package removal instead.
 
 # Documentation
