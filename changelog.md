@@ -10,3 +10,7 @@ Added Asheroto Winget Installer - https://github.com/asheroto/winget-install
 
 -- v1.0.3
 Removed "Install UWP Apps" from "Revert". Use Winget.
+
+-- v1.1
+Added "Configs (Beta)" section for program setup.
+ - Brave (testing)

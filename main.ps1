@@ -67,6 +67,7 @@ function Show-MainMenu {
     Write-SectionHeader -Title 'Programs'
     Write-MenuItem -Number '4' -Text 'Winget'
     Write-MenuItem -Number '5' -Text 'Chocolatey'
+    Write-MenuItem -Number '6' -Text 'Configs (beta)'
     Write-Host ""
 
     Write-Host "    0) Exit" -ForegroundColor Red
@@ -130,7 +131,6 @@ function Expand-ChoiceTokens {
     return ,$tokens
 }
 
-# Returns $true if the user chose to go back (0), otherwise $false.
 function Invoke-SelectedActions {
     param(
         [Parameter(Mandatory)][string]$RawChoice,
@@ -231,7 +231,7 @@ if (-not (Test-IsAdmin)) {
 while ($true) {
     Show-MainMenu
 
-    $choice = Read-MenuChoice -Range "0-5"
+    $choice = Read-MenuChoice -Range "0-6"
     if ($null -eq $choice) { continue }
     $choice = $choice.Trim()
     if ([string]::IsNullOrWhiteSpace($choice)) { continue }
@@ -256,6 +256,10 @@ while ($true) {
             }
             '5' {
                 & "$PSScriptRoot\programs\chocolatey-menu.ps1"
+                continue
+            }
+            '6' {
+                & "$PSScriptRoot\programs\configs-menu.ps1"
                 continue
             }
             '0' {
