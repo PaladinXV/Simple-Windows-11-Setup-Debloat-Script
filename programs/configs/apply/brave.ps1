@@ -45,6 +45,5 @@ Set-RegValue -Path $bravePolicyPath -Name 'BraveStatsPingEnabled'    -Value 0 -T
 Set-RegValue -Path $bravePolicyPath -Name 'BraveWaybackMachineEnabled' -Value 0 -Type DWord
 Set-RegValue -Path $bravePolicyPath -Name 'BravePlaylistEnabled'     -Value 0 -Type DWord
 Set-RegValue -Path $bravePolicyPath -Name 'TorDisabled'              -Value 1 -Type DWord
-Set-RegValue -Path $bravePolicyPath -Name 'BackgroundModeEnabled'    -Value 0 -Type DWord
 
 Write-Host "    - Brave config applied." -ForegroundColor Green
