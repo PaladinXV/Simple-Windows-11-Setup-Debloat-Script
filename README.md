@@ -39,6 +39,3 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; irm "https://raw.githubusercon
 
 **Was AI used in creating this?**
 - Yes
-
-**Current Issues**
-- Recent Windows 11 update has blocked Widgets from being disabled. 
