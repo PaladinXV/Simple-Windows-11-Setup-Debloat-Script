@@ -87,8 +87,8 @@ while ($true) {
     Write-Host "    Configs (beta)" -ForegroundColor Yellow
     Write-Host "    ----------------" -ForegroundColor DarkGray
     Write-Host ""
-    Write-Host "    1) Apply" -ForegroundColor Yellow
-    Write-Host "    2) Revert" -ForegroundColor Yellow
+    Write-Host "    1) Apply" 
+    Write-Host "    2) Revert"
     Write-Host ""
     Write-Host "    0) Back" -ForegroundColor Red
     Write-Host ""
