@@ -13,7 +13,7 @@ function Wait-ForConfigs {
 }
 
 $configs = [ordered]@{
-    '1' = @{ Name = 'Brave'; Path = 'configs\brave.ps1' }
+    '1' = @{ Name = 'Brave (Origin-Like)'; Path = 'configs\brave.ps1' }
 }
 
 while ($true) {
