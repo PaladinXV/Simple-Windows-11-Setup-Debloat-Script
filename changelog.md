@@ -17,3 +17,6 @@ Added "Configs (Beta)" section for program setup.
 
 -- v1.1.1 
 Removed Asheroto Winget Installer. Didn't like that I would have to rely on another project.
+
+-- v1.1.2 
+Added Apply/Revert options to program configs
