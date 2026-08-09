@@ -307,7 +307,12 @@ foreach ($cat in $catalog.Keys) {
 }
 
 while ($true) {
-    if (-not (Test-ChocoInstalled)) {
+    Clear-Host
+    Write-Host ""
+    Write-Host "    Checking if Chocolatey is installed..." -ForegroundColor Yellow
+
+    $chocoInstalled = Test-ChocoInstalled
+    if (-not $chocoInstalled) {
         $ready = Show-ChocoMissingPrompt
         if (-not $ready) { return }
     }
