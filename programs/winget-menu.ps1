@@ -292,7 +292,6 @@ while ($true) {
     Write-Host ""
     Write-Host '    Multi-Selection is available "1,2,5-8"' -ForegroundColor DarkGray
     Write-Host "    A) Update All" -ForegroundColor Yellow
-    Write-Host "    I) Install Winget (Asheroto GitHub)" -ForegroundColor Yellow
     Write-Host "    0) Back" -ForegroundColor Red
     Write-Host ""
 
@@ -302,11 +301,6 @@ while ($true) {
     if ($choice -eq '0') { return }
 
     if ($choice -match '^[Aa]$') { Write-Host ""; Update-All; Wait-ForWinget; continue }
-
-    if ($choice -match '^[Ii]$') {
-        Start-Process powershell.exe -ArgumentList '-NoExit', '-Command', 'irm asheroto.com/winget | iex'
-        continue
-    }
 
     $numbers = @(Expand-Selection -InputText $choice)
     if ($numbers.Count -eq 0) {
