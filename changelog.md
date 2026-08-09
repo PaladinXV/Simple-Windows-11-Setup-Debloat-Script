@@ -14,3 +14,6 @@ Removed "Install UWP Apps" from "Revert". Use Winget.
 -- v1.1
 Added "Configs (Beta)" section for program setup.
  - Brave (testing)
+
+-- v1.1.1 
+Removed Asheroto Winget Installer. Didn't like that I would have to rely on another project.
