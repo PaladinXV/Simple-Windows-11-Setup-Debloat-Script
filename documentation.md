@@ -19,7 +19,7 @@
 - Sets all the registry keys (settings) 
 
 > Disable Device Metadata (beta)
-- Prevents Windows from downloading device metadata from Microsoft
+- Prevents Windows from downloading device metadata from Microsoft (I currently do not have a device to be able to test this so it will remain as a beta)
 
 > Disable Drivers via Windows Update
 - Prevents Windows from downloading drivers from Windows Update
@@ -28,13 +28,13 @@
 - In "Apply Setup", Ultimate Performance Power Plan is added, but not activated
 
 > Set Solid Colour Wallpaper (Black)
-- Sets the wallpaper to black. More of a personal use option
+- Sets the wallpaper to solid black. More of a personal use option
 
 
 # Revert
 
 > Revert Setup Script (Settings Only)
-- Reverts all the registry keys (settings) that were applied in the "Apply Setup" script
+- Reverts all the registry keys (settings) that were applied in the "Apply Setup" script. Reverting everything in a single prompt is possible but would take a long time due to Winget, downloads etc.
 
 > Enable Hibernate
 - Re-enables Hibernate as it was disabled in the "Apply-Setup" script
@@ -51,9 +51,6 @@
 > Revert Right-Click Context Menu
 - Reverts back to the new Windows 11 Right-Click menu
 
-> Reinstall UWP Apps (Winget)
-- Uses Winget to install Windows Apps that the user may want (ie OneDrive, Xbox)
-
 
 # Programs
 
@@ -62,10 +59,13 @@
 - Can be used to update installed programs
 
 > Chocolatey
-- Asks to install the Chocolatey installer
+- Checks and asks to install the Chocolatey installer
 - Uses Chocolatey to install programs
 - Can be used to update installed programs
 
+> Configs (beta)
+- Deploys configs for programs
+- Can be reverted if required
 
 
 # 2) Documentation of changes (Apply-Setup Script order)
@@ -91,7 +91,7 @@
 - Widgets
 - Xbox
 
-User can reinstall these with the "Reinstall UWP Apps (Winget)" or "Winget" options. These are considered bloat and can be annoying with notifications etc. or even hijacking user files (OneDrive)
+User can reinstall these with the "Winget" option. These are considered bloat and can be annoying with notifications or even hijacking user files (OneDrive).
 
 
 > Changes to Microsoft Edge browser
@@ -124,4 +124,36 @@ User can reinstall these with the "Reinstall UWP Apps (Winget)" or "Winget" opti
 
 
 # Immersive Control Panel
+
+> System Settings
+- Disables Microsoft's "Lets finish setting up this device" and other Welcome Screen prompts
+- Disables Storage Sense
+- Changes Alt-Tab to show open Windows only
+- Enables "End Task" in the Taskbar
+- Hides the "Windows Spotlight" desktop icon
+
+> Content Delivery
+- Disables "Suggested Apps"
+- Disables "Silent App Installation"
+- Disables "Promotional Content"
+- Disables "Windows Suggestions"
+- Disables "Tips/Soft Landing"
+- Disables "Subscribed content"
+- Disables various "Microsoft Content Experiences"
+
+> Cloud Content
+- Disables "Consumer Experiences"
+- Disables "Cloud Consumer-Account Content"
+- Disables "CLoud-Optimized content"
+
+> Theme
+- Disables Spotlight on the lock-screen
+- Disables Spotlight/Info overlay on the lock-screen
+- Prevents Windows Spotlight on the Desktop
+- Disables Windows Spotlight features
+- Sets Dark Mode
+- sets Dark Mode for Apps
+- Disables Windows Transparency Effects
+- Removes Windows Sign-in Background Image
+
 
