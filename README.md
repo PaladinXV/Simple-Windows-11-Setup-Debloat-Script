@@ -1,14 +1,15 @@
 # Simple Windows 11 25H2 Setup Script
-A simple, interactive PowerShell script to help setup/debloat Windows 11 Home/Pro for a better experience.
+A simple, interactive PowerShell script to help setup/debloat Windows for a better experience.
 
 # Features
 - Sets good defaults for a better experience (ie Folder Options, Immersive Control Panel settings) without breaking functionality.
 - Removes pre-installed UWP apps/shortcuts (ie OneDrive, Copilot, Xbox).
 - Able to revert most settings manually, or sepererately revert some that might not want to be changed.
+- Setup for Windows 11 25H2, Windows 10 LTSC IoT 2021 and Windows 11 LTSC IoT 2024.
 
 # Warning
 > [!Warning]
-> If you are using this on an existing install, please note that it will uninstall Windows Apps (ie Outlook, OneDrive, Copilot etc.). For the best outcome, use it on an fresh, updated Windows 11 25H2 install.
+> Please use at your own risk. If you use Microsoft Apps, select the "Settings only" option.
 
 # Known Issues
 - Widget registry key blocked with latest Windows updated. Testing package removal instead.
