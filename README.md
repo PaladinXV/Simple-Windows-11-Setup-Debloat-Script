@@ -27,7 +27,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; irm "https://raw.githubusercon
 
 # FAQ
 **What versions of Windows will this work on?**
-- It has been tested on **Windows 11 25H2 Home/Pro**.
+- It has currently been tested on **Windows 11 25H2 Home/Pro**.
 
 **Can I change or revert things?**
 - Yes, most settings can be reverted either manually within Windows or via the script.
