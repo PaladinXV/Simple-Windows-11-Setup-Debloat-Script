@@ -1,4 +1,5 @@
 # Script by PaladinXV
+# Windows 11 25H2
 
 [CmdletBinding()]
 param()

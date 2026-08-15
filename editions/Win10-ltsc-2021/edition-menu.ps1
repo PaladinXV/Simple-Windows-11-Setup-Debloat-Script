@@ -1,4 +1,5 @@
 # Script by PaladinXV
+# Windows 10 LTSC 2021
 
 [CmdletBinding()]
 param()

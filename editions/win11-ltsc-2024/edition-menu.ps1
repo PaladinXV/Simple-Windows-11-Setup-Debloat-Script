@@ -1,4 +1,5 @@
 # Script by PaladinXV
+# Windows 11 LTSC 2024
 
 [CmdletBinding()]
 param()
