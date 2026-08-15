@@ -79,13 +79,14 @@ function Show-ApplyMenu {
     Write-TitleBanner
 
     Write-SectionHeader -Title 'Apply'
-    Write-MenuItem -Number '1' -Text 'Apply Setup'
+    Write-MenuItem -Number '1' -Text 'Apply All'
+    Write-MenuItem -Number '2' -Text 'Apply Settings Only'
 
     Write-SectionHeader -Title 'Optional'
-    Write-MenuItem -Number '2' -Text 'Activate Ultimate Performance Power Plan'
-    Write-MenuItem -Number '3' -Text 'Disable Device Metadata (Beta)'
-    Write-MenuItem -Number '4' -Text 'Disable Driver Downloads Via Windows Update'
-    Write-MenuItem -Number '5' -Text 'Set Solid Color Black As Wallpaper'
+    Write-MenuItem -Number '3' -Text 'Activate Ultimate Performance Power Plan'
+    Write-MenuItem -Number '4' -Text 'Disable Device Metadata (Beta)'
+    Write-MenuItem -Number '5' -Text 'Disable Driver Downloads Via Windows Update'
+    Write-MenuItem -Number '6' -Text 'Set Solid Color Black As Wallpaper'
     Write-Host ""
 
     Write-Host "    0) Back to Main Menu" -ForegroundColor Red
@@ -183,11 +184,12 @@ function Invoke-SelectedActions {
 }
 
 $ApplyActions = [ordered]@{
-    '1' = @{ Label = 'Apply Setup';                                   Path = 'apply\apply-setup.ps1';                     RequiresRestart = $true }
-    '2' = @{ Label = 'Activate Ultimate Performance Power Plan';     Path = 'apply\activate-ultimate-power-plan.ps1' }
-    '3' = @{ Label = 'Disable Device Metadata (Beta)';               Path = 'apply\disable-device-metadata.ps1' }
-    '4' = @{ Label = 'Disable Driver Downloads Via Windows Update';  Path = 'apply\disable-drivers-via-windows-update.ps1' }
-    '5' = @{ Label = 'Set Solid Color Black As Wallpaper';           Path = 'apply\set-wallpaper-black.ps1' }
+    '1' = @{ Label = 'Apply All';                                     Path = 'apply\apply-setup.ps1';                     RequiresRestart = $true }
+    '2' = @{ Label = 'Apply Settings Only';                           Path = 'apply\apply-settings.ps1';                  RequiresRestart = $true }
+    '3' = @{ Label = 'Activate Ultimate Performance Power Plan';     Path = 'apply\activate-ultimate-power-plan.ps1' }
+    '4' = @{ Label = 'Disable Device Metadata (Beta)';               Path = 'apply\disable-device-metadata.ps1' }
+    '5' = @{ Label = 'Disable Driver Downloads Via Windows Update';  Path = 'apply\disable-drivers-via-windows-update.ps1' }
+    '6' = @{ Label = 'Set Solid Color Black As Wallpaper';           Path = 'apply\set-wallpaper-black.ps1' }
 }
 
 $RevertActions = [ordered]@{
@@ -203,7 +205,7 @@ function Invoke-ApplyMenu {
     while ($true) {
         Show-ApplyMenu
 
-        $choice = Read-MenuChoice -Range "0-5" -MultiSelect
+        $choice = Read-MenuChoice -Range "0-6" -MultiSelect
         if ($null -eq $choice) { continue }
         if ([string]::IsNullOrWhiteSpace($choice)) { continue }
 

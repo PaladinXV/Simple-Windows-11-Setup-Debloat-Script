@@ -8,7 +8,7 @@ A simple, interactive PowerShell script to help setup/debloat Windows 11 Home/Pr
 
 # Warning
 > [!Warning]
-> If you are using this on an existing install, please note that it will uninstall Windows Apps (ie Outlook, OneDrive, Copilot etc.). For the best outcome, use it on an fresh, updated Windows 11 25H2 install
+> If you are using this on an existing install, please note that it will uninstall Windows Apps (ie Outlook, OneDrive, Copilot etc.). For the best outcome, use it on an fresh, updated Windows 11 25H2 install.
 
 # Known Issues
 - Widget registry key blocked with latest Windows updated. Testing package removal instead.

@@ -20,3 +20,6 @@ Removed Asheroto Winget Installer. Didn't like that I would have to rely on anot
 
 -- v1.1.2 
 Added Apply/Revert options to program configs
+
+-- v1.1.3 
+Re-added "Settings Only" menu
