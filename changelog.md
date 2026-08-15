@@ -23,3 +23,6 @@ Added Apply/Revert options to program configs
 
 -- v1.1.3 
 Re-added "Settings Only" menu
+
+-- v2.0.0
+Added Seperate Windows Edition Options
