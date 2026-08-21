@@ -26,3 +26,6 @@ Re-added "Settings Only" menu
 
 -- v2.0.0
 Added Seperate Windows Edition Options
+
+-- v2.0.1 
+Removed seperate options

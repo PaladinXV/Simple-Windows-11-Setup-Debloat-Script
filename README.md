@@ -18,6 +18,8 @@ A simple, interactive PowerShell script to help setup/debloat Windows 11 25H2 fo
 [Documentation](https://github.com/PaladinXV/Simple-Windows-11-Setup-Debloat-Script/blob/main/documentation.md)
 
 # How To Use
+Open Start/Search and look for "PowerShell". It should come up with "Allow local PowerShell Scripts to run without signing. Require signing for remote scripts." Enable it.
+
 Open PowerShell or Terminal and Copy + Paste the link below.
 
 ```
