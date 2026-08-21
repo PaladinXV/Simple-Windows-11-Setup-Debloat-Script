@@ -1,21 +1,20 @@
 # Simple Windows 11 25H2 Setup Script
-A simple, interactive PowerShell script to help setup/debloat Windows for a better experience.
+A simple, interactive PowerShell script to help setup/debloat Windows 11 25H2 for a better experience.
 
 # Features
 - Sets good defaults for a better experience (ie Folder Options, Immersive Control Panel settings) without breaking functionality.
 - Removes pre-installed UWP apps/shortcuts (ie OneDrive, Copilot, Xbox).
 - Able to revert most settings manually, or sepererately revert some that might not want to be changed.
-- Setup for Windows 11 25H2, Windows 10 LTSC IoT 2021 and Windows 11 LTSC IoT 2024.
 
 # Warning
 > [!Warning]
-> Please use at your own risk. If you use Microsoft Apps, select the "Settings only" option.
+> Use at your own risk. If you use Microsoft Apps, select the "Settings only" option.
 
 # Known Issues
-- Widget registry key blocked with latest Windows updated. Testing package removal instead.
+- Widget registry key blocked with latest Windows update. Testing package removal instead.
 
 # Documentation
-- I am currently working on documenting all changes and features.
+- Currently working on documenting all changes and features.
 [Documentation](https://github.com/PaladinXV/Simple-Windows-11-Setup-Debloat-Script/blob/main/documentation.md)
 
 # How To Use
@@ -35,7 +34,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; irm "https://raw.githubusercon
 - Windows Apps can be reinstalled.
 
 **Can this be used on an existing install?**
-- Yes. If you use Microsoft Apps, please be mindful it will remove them.
+- Yes. If you use Microsoft Apps, select "Settings Only", as it will remove Windows apps.
 - A Restore Point can be created.
 
 **Was AI used in creating this?**
